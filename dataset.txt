@@ -1,0 +1,120 @@
+Python is a programming language.
+Python is easy to learn.
+Python is useful for data analysis.
+Python is useful for machine learning.
+Python is popular among developers.
+Python can be used to build applications.
+Python can be used to process data.
+Python can be used to create websites.
+Python is useful for artificial intelligence.
+Python is simple and powerful.
+
+Machine learning is a part of artificial intelligence.
+Machine learning learns patterns from data.
+Machine learning uses training data.
+Machine learning models make predictions.
+A model learns from examples.
+Training data is used to train a model.
+A trained model can make predictions.
+Data is important for machine learning.
+Good data can improve a machine learning model.
+Machine learning can solve many problems.
+
+Artificial intelligence helps computers perform tasks.
+Artificial intelligence can work with text.
+Artificial intelligence can work with images.
+Artificial intelligence can work with speech.
+Artificial intelligence is used in many applications.
+AI systems learn patterns from data.
+AI models can make predictions.
+AI can be used for language tasks.
+AI can be used for recommendation systems.
+AI can be used for computer vision.
+
+Deep learning is a part of machine learning.
+Deep learning uses neural networks.
+Neural networks contain layers.
+Neural networks learn patterns from data.
+A neural network can process numbers.
+A neural network can classify data.
+Deep learning is useful for images.
+Deep learning is useful for language.
+Deep learning models need training data.
+Deep learning models can learn complex patterns.
+
+A transformer is a neural network architecture.
+Transformers are useful for language tasks.
+Transformers process sequences of tokens.
+A transformer uses attention.
+Attention helps a model focus on important tokens.
+Self attention allows tokens to interact with each other.
+Multi head attention uses multiple attention heads.
+A transformer can process text.
+Transformers are used in language models.
+Transformers are widely used in modern AI.
+
+A language model predicts the next token.
+A language model learns patterns in text.
+A token represents a piece of text.
+Tokens are converted into numbers.
+Token embeddings represent tokens as vectors.
+Position embeddings provide information about position.
+Attention uses queries keys and values.
+Queries represent what a token is looking for.
+Keys represent information available from tokens.
+Values contain information used by attention.
+
+The model produces logits for each possible token.
+Softmax converts logits into probabilities.
+The highest probability token can be selected.
+Sampling can select a token from probabilities.
+Temperature controls the randomness of sampling.
+A lower temperature makes generation more predictable.
+A higher temperature makes generation more random.
+Training changes the model parameters.
+The optimizer updates model parameters.
+Loss measures how wrong the model prediction is.
+
+PyTorch is a deep learning framework.
+PyTorch can create neural networks.
+PyTorch provides tensors.
+Tensors store numerical data.
+PyTorch can calculate gradients.
+Gradients are used during training.
+An optimizer updates the model weights.
+Adam is a popular optimization algorithm.
+Cross entropy loss is used for classification.
+Language models commonly use cross entropy loss.
+
+Data analysis helps understand data.
+Data can contain numbers and text.
+Data can contain useful patterns.
+A dataset contains examples.
+A dataset can be divided into training and testing data.
+Training data is used to learn patterns.
+Testing data is used to evaluate a model.
+A model should be tested on data it has not seen.
+Good preprocessing can improve model training.
+Machine learning depends on useful data.
+
+Python can work with files.
+Python can read text files.
+Python can store data in lists.
+Python can process strings.
+Python can work with numerical data.
+Python can train machine learning models.
+Python can build APIs.
+Python can work with PyTorch.
+Python can work with FastAPI.
+Python can be used to build AI applications.
+
+A neural network learns weights during training.
+Weights control how information moves through a network.
+The model starts with random weights.
+Training changes the weights.
+The loss decreases when predictions improve.
+Backpropagation calculates gradients.
+Gradients show how parameters should change.
+The optimizer uses gradients to update parameters.
+Training is repeated for many steps.
+More useful data can help a model learn better patterns.
