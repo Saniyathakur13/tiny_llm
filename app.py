@@ -135,15 +135,9 @@ with tab1:
 
 # --- TAB 2: DOCUMENT SEARCH ---
 with tab2:
-    st.subheader("Document Engine (Vector Math)")
-    st.write("""
-    **How this works without an LLM:** 
-    This tab uses a pre-trained `SentenceTransformer` to convert your text into **384-dimensional vectors**. 
-    When you ask a question, it converts your question into a vector and calculates the **Cosine Similarity** (the angle between the vectors) to find the most mathematically similar paragraph. 
-    It is the exact same math used in RAG (Retrieval-Augmented Generation) systems.
-    """)
+    st.subheader("Document Engine")
+    st.write("Upload a PDF or TXT file. The AI will use Vector Math to find the most relevant paragraphs.")
     
-    st.markdown("---")
     uploaded_file = st.file_uploader("Upload Document", type=["pdf", "txt"])
     
     if uploaded_file is not None:
@@ -152,7 +146,18 @@ with tab2:
         else:
             doc_text = uploaded_file.read().decode("utf-8")
 
-        chunks = [chunk.strip() for chunk in doc_text.split('\n\n') if len(chunk.strip()) > 50]
+        # FIXED CHUNKING HERE
+        raw_lines = [line.strip() for line in doc_text.split('\n') if len(line.strip()) > 20]
+        chunks = []
+        current_chunk = ""
+        for line in raw_lines:
+            if len(current_chunk) + len(line) < 500:
+                current_chunk += line + " "
+            else:
+                chunks.append(current_chunk.strip())
+                current_chunk = line + " "
+        if current_chunk:
+            chunks.append(current_chunk.strip())
         
         if len(chunks) == 0:
             st.warning("Could not extract enough text from this document.")
@@ -173,6 +178,7 @@ with tab2:
                     top_3_indices = np.argsort(similarities)[-3:][::-1]
 
                 st.subheader("Top 3 Matches Found:")
+                
                 for i, idx in enumerate(top_3_indices):
                     score = similarities[idx]
                     chunk_text = chunks[idx]
@@ -183,12 +189,12 @@ with tab2:
                     else:
                         st.warning("The similarity score is too low. No relevant text found.")
                         break
-
 # --- TAB 3: STORYTELLER ---
 with tab3:
     st.subheader("📖 TinyStories 13.7M Model")
-    st.write("A 13.7M parameter Transformer trained from scratch on 10,000 stories using a BPE tokenizer and custom PyTorch training loop.")
+    st.write("A 13.7M parameter Transformer trained from scratch on 10,000 stories.")
     
+    st.markdown("---")
     st.markdown("### Step 1: Choose how you want to start your story")
     
     start_mode = st.radio(
@@ -204,17 +210,14 @@ with tab3:
         def get_story_dataframe():
             file_path = "story_model/tiny_stories.parquet"
             url = "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/main/data/train-00000-of-00004-2d5a1467fff1081b.parquet"
-            
-            # If the file doesn't exist (like on Streamlit Cloud), download it!
             if not os.path.exists(file_path):
-                with st.spinner("Downloading TinyStories dataset (this takes 10 seconds)..."):
+                with st.spinner("Downloading TinyStories dataset for the first time..."):
                     response = requests.get(url, stream=True)
                     os.makedirs("story_model", exist_ok=True)
                     with open(file_path, 'wb') as f:
                         for chunk in response.iter_content(chunk_size=1024*1024):
                             if chunk:
                                 f.write(chunk)
-            
             df = pd.read_parquet(file_path)
             df["prompt"] = df["text"].apply(lambda x: x.split(".")[0] + ".")
             return df["prompt"].tolist()
@@ -234,13 +237,21 @@ with tab3:
             selected_index = selected_row.selection.rows[0]
             prompt = all_prompts[selected_index]
             st.info(f"**Selected Starter:** *{prompt}*")
+            if len(selected_row.selection.rows) > 0:
+                selected_index = selected_row.selection.rows[0]
+            prompt = all_prompts[selected_index]
+            st.info(f"**Selected Starter:** *{prompt}*")
 
     elif start_mode == "🎲 Random from Dataset":
         if st.button("🎲 Pick a Random Story Starter"):
-            df = pd.read_parquet("story_model/tiny_stories.parquet")
-            random_story = df.sample(1)["text"].values[0]
-            first_sentence = random_story.split(".")[0] + "."
-            st.session_state["random_prompt"] = first_sentence
+            file_path = "story_model/tiny_stories.parquet"
+            if os.path.exists(file_path):
+                df = pd.read_parquet(file_path)
+                random_story = df.sample(1)["text"].values[0]
+                first_sentence = random_story.split(".")[0] + "."
+                st.session_state["random_prompt"] = first_sentence
+            else:
+                st.error("Dataset not downloaded yet. Please click the 'Pick from all 10,000 stories' tab first to trigger the download.")
             
         if "random_prompt" in st.session_state:
             prompt = st.session_state["random_prompt"]
@@ -248,6 +259,7 @@ with tab3:
 
     else:
         prompt = st.text_input("Enter your starting text:", value="Once upon a time")
+            
 
     st.markdown("### Step 2: Adjust the creativity")
     creativity = st.slider(
