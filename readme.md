@@ -1,10 +1,4 @@
-This is the moment that makes it all worth it. A README is what recruiters read first, and your old README only mentions the tiny 2.5K model. 
 
-Here is your **brand new, highly professional README** that highlights everything you built today. Copy and paste this entire block into your `README.md` file, save it, and push it to GitHub.
-
-***
-
-```markdown
 # 🧠 Raw AI Orbit: From-Scratch Transformers & Vector Search
 
 A dual-model AI application built entirely from scratch using PyTorch and Streamlit. No OpenAI APIs, no pre-trained language weights—just raw math, custom architecture, and custom training loops running on a CPU.
