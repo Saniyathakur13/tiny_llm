@@ -7,3 +7,4 @@ datasets
 matplotlib
 tqdm
 tiktoken
+requests

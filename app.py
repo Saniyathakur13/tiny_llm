@@ -9,7 +9,7 @@ import numpy as np
 import tiktoken
 import sys
 import os
-
+import requests
 
 # Import the story model
 sys.path.append(os.path.join(os.path.dirname(__file__), "story_model"))
@@ -202,7 +202,20 @@ with tab3:
     if start_mode == "📚 Pick from all 10,000 stories":
         @st.cache_data
         def get_story_dataframe():
-            df = pd.read_parquet("story_model/tiny_stories.parquet")
+            file_path = "story_model/tiny_stories.parquet"
+            url = "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/main/data/train-00000-of-00004-2d5a1467fff1081b.parquet"
+            
+            # If the file doesn't exist (like on Streamlit Cloud), download it!
+            if not os.path.exists(file_path):
+                with st.spinner("Downloading TinyStories dataset (this takes 10 seconds)..."):
+                    response = requests.get(url, stream=True)
+                    os.makedirs("story_model", exist_ok=True)
+                    with open(file_path, 'wb') as f:
+                        for chunk in response.iter_content(chunk_size=1024*1024):
+                            if chunk:
+                                f.write(chunk)
+            
+            df = pd.read_parquet(file_path)
             df["prompt"] = df["text"].apply(lambda x: x.split(".")[0] + ".")
             return df["prompt"].tolist()
         
