@@ -219,6 +219,8 @@ with tab3:
                             if chunk:
                                 f.write(chunk)
             df = pd.read_parquet(file_path)
+            # ONLY GRAB THE FIRST 500 STORIES TO PREVENT LAG
+            df = df.head(500) 
             df["prompt"] = df["text"].apply(lambda x: x.split(".")[0] + ".")
             return df["prompt"].tolist()
         
@@ -235,10 +237,6 @@ with tab3:
         
         if len(selected_row.selection.rows) > 0:
             selected_index = selected_row.selection.rows[0]
-            prompt = all_prompts[selected_index]
-            st.info(f"**Selected Starter:** *{prompt}*")
-            if len(selected_row.selection.rows) > 0:
-                selected_index = selected_row.selection.rows[0]
             prompt = all_prompts[selected_index]
             st.info(f"**Selected Starter:** *{prompt}*")
 
@@ -259,7 +257,6 @@ with tab3:
 
     else:
         prompt = st.text_input("Enter your starting text:", value="Once upon a time")
-            
 
     st.markdown("### Step 2: Adjust the creativity")
     creativity = st.slider(
@@ -305,7 +302,6 @@ with tab3:
                     story_text = story_text[:last_period_index + 1]
                 
                 st.success(story_text)
-
 # --- TAB 4: MODEL STATS (Now covers ALL models) ---
 with tab4:
     st.subheader("Architecture & Hyperparameters")
