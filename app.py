@@ -223,7 +223,7 @@ with tab3:
         
         selected_row = st.dataframe(
             pd.DataFrame(all_prompts, columns=["Story Starters"]),
-            use_container_width=True,
+            width="stretch",
             height=200, 
             hide_index=True,
             on_select="rerun",
@@ -262,7 +262,7 @@ with tab3:
     st.markdown("---")
     
     if prompt and not (start_mode == "🎲 Random from Dataset" and "random_prompt" not in st.session_state):
-        if st.button("✨ Generate Story", use_container_width=True):
+        if st.button("✨ Generate Story", width="stretch"):
             with st.spinner("Writing your story..."):
                 tokens = story_tokenizer.encode(prompt)
                 tokens = torch.tensor(tokens, dtype=torch.long).unsqueeze(0)

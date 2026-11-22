@@ -81,4 +81,8 @@ Run these commands exactly:
 ```powershell
 git add README.md
 git commit -m "Corrected README to reflect current features"
+<<<<<<< Updated upstream
 git push
+=======
+git push
+>>>>>>> Stashed changes
