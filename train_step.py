@@ -1,81 +1,45 @@
 import torch
 import torch.nn as nn
-
+import json
 from model import TinyLanguageModel
+from dataset import tokens
 
 block_size = 4
 
-# Load the complete dataset
-from dataset import tokens
+# Load vocab size
+with open("vocab.json", "r") as f:
+    vocab_size = len(json.load(f))
 
 # Create input and target sequences
 x = []
 y = []
 
 for i in range(len(tokens) - block_size):
-
     input_chunk = tokens[i:i + block_size]
-
-    target_chunk = tokens[
-        i + 1:i + block_size + 1
-    ]
-
+    target_chunk = tokens[i + 1:i + block_size + 1]
     x.append(input_chunk)
     y.append(target_chunk)
 
 x = torch.stack(x)
 y = torch.stack(y)
 
-print("Input shape:")
-print(x.shape)
-
-print("\nTarget shape:")
-print(y.shape)
-
-
-# Create model
 model = TinyLanguageModel()
-
-# Loss function
 loss_function = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
-# Optimizer
-optimizer = torch.optim.Adam(
-    model.parameters(),
-    lr=0.001
-)
-
-
-# Training
+print("Starting training...")
 for step in range(2000):
-
     logits = model(x)
-
-    loss = loss_function(
-        logits.view(-1, 256),
-        y.view(-1)
-    )
-
+    
+    # We use vocab_size here instead of hardcoded 256
+    loss = loss_function(logits.view(-1, vocab_size), y.view(-1))
+    
     optimizer.zero_grad()
-
     loss.backward()
-
     optimizer.step()
 
     if step % 200 == 0:
+        print("Step:", step, "Loss:", loss.item())
 
-        print(
-            "Step:",
-            step,
-            "Loss:",
-            loss.item()
-        )
-
-
-# Save trained model
-torch.save(
-    model.state_dict(),
-    "tiny_llm.pth"
-)
-
-print("\nModel saved!")
+torch.save(model.state_dict(), "tiny_llm.pth")
+print("Model saved!")

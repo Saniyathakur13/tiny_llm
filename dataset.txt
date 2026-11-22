@@ -1,120 +1,120 @@
-Python is a programming language.
-Python is easy to learn.
-Python is useful for data analysis.
-Python is useful for machine learning.
-Python is popular among developers.
-Python can be used to build applications.
-Python can be used to process data.
-Python can be used to create websites.
-Python is useful for artificial intelligence.
-Python is simple and powerful.
+Python is a programming language. <EOS>
+Python is easy to learn. <EOS>
+Python is useful for data analysis. <EOS>
+Python is useful for machine learning. <EOS>
+Python is popular among developers. <EOS>
+Python can be used to build applications. <EOS>
+Python can be used to process data. <EOS>
+Python can be used to create websites. <EOS>
+Python is useful for artificial intelligence. <EOS>
+Python is simple and powerful. <EOS>
 
-Machine learning is a part of artificial intelligence.
-Machine learning learns patterns from data.
-Machine learning uses training data.
-Machine learning models make predictions.
-A model learns from examples.
-Training data is used to train a model.
-A trained model can make predictions.
-Data is important for machine learning.
-Good data can improve a machine learning model.
-Machine learning can solve many problems.
+Machine learning is a part of artificial intelligence. <EOS>
+Machine learning learns patterns from data. <EOS>
+Machine learning uses training data. <EOS>
+Machine learning models make predictions. <EOS>
+A model learns from examples. <EOS>
+Training data is used to train a model. <EOS>
+A trained model can make predictions. <EOS>
+Data is important for machine learning. <EOS>
+Good data can improve a machine learning model. <EOS>
+Machine learning can solve many problems. <EOS>
 
-Artificial intelligence helps computers perform tasks.
-Artificial intelligence can work with text.
-Artificial intelligence can work with images.
-Artificial intelligence can work with speech.
-Artificial intelligence is used in many applications.
-AI systems learn patterns from data.
-AI models can make predictions.
-AI can be used for language tasks.
-AI can be used for recommendation systems.
-AI can be used for computer vision.
+Artificial intelligence helps computers perform tasks. <EOS>
+Artificial intelligence can work with text. <EOS>
+Artificial intelligence can work with images. <EOS>
+Artificial intelligence can work with speech. <EOS>
+Artificial intelligence is used in many applications. <EOS>
+AI systems learn patterns from data. <EOS>
+AI models can make predictions. <EOS>
+AI can be used for language tasks. <EOS>
+AI can be used for recommendation systems. <EOS>
+AI can be used for computer vision. <EOS>
 
-Deep learning is a part of machine learning.
-Deep learning uses neural networks.
-Neural networks contain layers.
-Neural networks learn patterns from data.
-A neural network can process numbers.
-A neural network can classify data.
-Deep learning is useful for images.
-Deep learning is useful for language.
-Deep learning models need training data.
-Deep learning models can learn complex patterns.
+Deep learning is a part of machine learning. <EOS>
+Deep learning uses neural networks. <EOS>
+Neural networks contain layers. <EOS>
+Neural networks learn patterns from data. <EOS>
+A neural network can process numbers. <EOS>
+A neural network can classify data. <EOS>
+Deep learning is useful for images. <EOS>
+Deep learning is useful for language. <EOS>
+Deep learning models need training data. <EOS>
+Deep learning models can learn complex patterns. <EOS>
 
-A transformer is a neural network architecture.
-Transformers are useful for language tasks.
-Transformers process sequences of tokens.
-A transformer uses attention.
-Attention helps a model focus on important tokens.
-Self attention allows tokens to interact with each other.
-Multi head attention uses multiple attention heads.
-A transformer can process text.
-Transformers are used in language models.
-Transformers are widely used in modern AI.
+A transformer is a neural network architecture. <EOS>
+Transformers are useful for language tasks. <EOS>
+Transformers process sequences of tokens. <EOS>
+A transformer uses attention. <EOS>
+Attention helps a model focus on important tokens. <EOS>
+Self attention allows tokens to interact with each other. <EOS>
+Multi head attention uses multiple attention heads. <EOS> 
+A transformer can process text. <EOS>
+Transformers are used in language models. <EOS>
+Transformers are widely used in modern AI. <EOS>
 
-A language model predicts the next token.
-A language model learns patterns in text.
-A token represents a piece of text.
-Tokens are converted into numbers.
-Token embeddings represent tokens as vectors.
-Position embeddings provide information about position.
-Attention uses queries keys and values.
-Queries represent what a token is looking for.
-Keys represent information available from tokens.
-Values contain information used by attention.
+A language model predicts the next token. <EOS>
+A language model learns patterns in text. <EOS>
+A token represents a piece of text. <EOS>
+Tokens are converted into numbers. <EOS>
+Token embeddings represent tokens as vectors. <EOS>
+Position embeddings provide information about position. <EOS>
+Attention uses queries keys and values. <EOS>
+Queries represent what a token is looking for. <EOS>
+Keys represent information available from tokens. <EOS>
+Values contain information used by attention. <EOS>
 
-The model produces logits for each possible token.
-Softmax converts logits into probabilities.
-The highest probability token can be selected.
-Sampling can select a token from probabilities.
-Temperature controls the randomness of sampling.
-A lower temperature makes generation more predictable.
-A higher temperature makes generation more random.
-Training changes the model parameters.
-The optimizer updates model parameters.
-Loss measures how wrong the model prediction is.
+The model produces logits for each possible token. <EOS>
+Softmax converts logits into probabilities. <EOS>
+The highest probability token can be selected. <EOS>
+Sampling can select a token from probabilities. <EOS>
+Temperature controls the randomness of sampling. <EOS>
+A lower temperature makes generation more predictable. <EOS>
+A higher temperature makes generation more random. <EOS>
+Training changes the model parameters. <EOS>
+The optimizer updates model parameters. <EOS>
+Loss measures how wrong the model prediction is. <EOS>
 
-PyTorch is a deep learning framework.
-PyTorch can create neural networks.
-PyTorch provides tensors.
-Tensors store numerical data.
-PyTorch can calculate gradients.
-Gradients are used during training.
-An optimizer updates the model weights.
-Adam is a popular optimization algorithm.
-Cross entropy loss is used for classification.
-Language models commonly use cross entropy loss.
+PyTorch is a deep learning framework. <EOS>
+PyTorch can create neural networks. <EOS>
+PyTorch provides tensors. <EOS>
+Tensors store numerical data. <EOS>
+PyTorch can calculate gradients. <EOS>
+Gradients are used during training. <EOS>
+An optimizer updates the model weights. <EOS>
+Adam is a popular optimization algorithm. <EOS>
+Cross entropy loss is used for classification. <EOS>
+Language models commonly use cross entropy loss. <EOS>
 
-Data analysis helps understand data.
-Data can contain numbers and text.
-Data can contain useful patterns.
-A dataset contains examples.
-A dataset can be divided into training and testing data.
-Training data is used to learn patterns.
-Testing data is used to evaluate a model.
-A model should be tested on data it has not seen.
-Good preprocessing can improve model training.
-Machine learning depends on useful data.
+Data analysis helps understand data. <EOS>
+Data can contain numbers and text. <EOS>
+Data can contain useful patterns. <EOS>
+A dataset contains examples. <EOS>
+A dataset can be divided into training and testing data. <EOS>
+Training data is used to learn patterns. <EOS>
+Testing data is used to evaluate a model. <EOS>
+A model should be tested on data it has not seen. <EOS>
+Good preprocessing can improve model training. <EOS>
+Machine learning depends on useful data. <EOS>
 
-Python can work with files.
-Python can read text files.
-Python can store data in lists.
-Python can process strings.
-Python can work with numerical data.
-Python can train machine learning models.
-Python can build APIs.
-Python can work with PyTorch.
-Python can work with FastAPI.
-Python can be used to build AI applications.
+Python can work with files. <EOS>
+Python can read text files. <EOS>
+Python can store data in lists. <EOS>
+Python can process strings. <EOS>
+Python can work with numerical data. <EOS>
+Python can train machine learning models. <EOS>
+Python can build APIs. <EOS>
+Python can work with PyTorch. <EOS>
+Python can work with FastAPI. <EOS>
+Python can be used to build AI applications. <EOS>
 
-A neural network learns weights during training.
-Weights control how information moves through a network.
-The model starts with random weights.
-Training changes the weights.
-The loss decreases when predictions improve.
-Backpropagation calculates gradients.
-Gradients show how parameters should change.
-The optimizer uses gradients to update parameters.
-Training is repeated for many steps.
-More useful data can help a model learn better patterns.
+A neural network learns weights during training. <EOS>
+Weights control how information moves through a network. <EOS>
+The model starts with random weights. <EOS>
+Training changes the weights. <EOS>
+The loss decreases when predictions improve. <EOS>
+Backpropagation calculates gradients. <EOS>
+Gradients show how parameters should change. <EOS>
+The optimizer uses gradients to update parameters. <EOS>
+Training is repeated for many steps. <EOS>
+More useful data can help a model learn better patterns. <EOS>

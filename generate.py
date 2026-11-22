@@ -1,135 +1,55 @@
 import json
 import torch
-
 from model import TinyLanguageModel
 
-
-# -------------------------
-# Load trained model
-# -------------------------
-
 model = TinyLanguageModel()
-
-model.load_state_dict(
-    torch.load("tiny_llm.pth")
-)
-
+model.load_state_dict(torch.load("tiny_llm.pth"))
 model.eval()
 
-
-# -------------------------
-# Load vocabulary
-# -------------------------
-
 with open("vocab.json", "r") as file:
-
     word_to_id = json.load(file)
 
-
-# JSON stores keys as strings,
-# so convert IDs back to integers
-
-word_to_id = {
-    word: int(token_id)
-    for word, token_id in word_to_id.items()
-}
-
-
-id_to_word = {
-    token_id: word
-    for word, token_id in word_to_id.items()
-}
-
-
-# -------------------------
-# Get starting text
-# -------------------------
+word_to_id = {word: int(token_id) for word, token_id in word_to_id.items()}
+id_to_word = {token_id: word for word, token_id in word_to_id.items()}
 
 text = input("Enter starting text: ")
-
 words = text.split()
+tokens = [word_to_id[word] for word in words if word in word_to_id]
 
-tokens = []
+if len(tokens) == 0:
+    print("None of those words are in the vocab!")
+    exit()
 
-for word in words:
+tokens = torch.tensor([tokens])
 
-    if word in word_to_id:
+max_tokens = 20 # It will stop early if it hits <EOS>
+eos_token_id = word_to_id.get("<EOS>", -1)
 
-        tokens.append(
-            word_to_id[word]
-        )
-
-    else:
-
-        print("Unknown word:", word)
-        exit()
-
-
-tokens = torch.tensor([
-    tokens
-])
-
-
-# -------------------------
-# Generate 5 tokens
-# -------------------------
-
-for i in range(5):
-
-    # Keep only the latest 4 tokens
-
+print("\nGenerating...")
+for i in range(max_tokens):
     input_tokens = tokens[:, -4:]
-
+    
     with torch.no_grad():
-
         logits = model(input_tokens)
-
-    # Get prediction for last position
-
+    
     last_logits = logits[:, -1, :]
+    
+    # Temperature actually applied now
+    temperature = 0.7 
+    probabilities = torch.softmax(last_logits / temperature, dim=-1)
+    
+    next_token = torch.multinomial(probabilities, num_samples=1)
+    tokens = torch.cat([tokens, next_token], dim=1)
 
-    # Highest-scoring token
-
-    # Convert logits into probabilities
-temperature = 2.0
-probabilities = torch.softmax(
-    last_logits,
-    dim=-1
-)
-
-# Randomly choose a token
-# using those probabilities
-
-next_token = torch.multinomial(
-    probabilities,
-    num_samples=1
-)
-
-    # Add predicted token
-
-tokens = torch.cat(
-        [
-            tokens,
-            next_token
-        ],
-        dim=1
-    )
-
-
-# -------------------------
-# Convert IDs to words
-# -------------------------
+    # STOP if we hit the EOS token!
+    if next_token.item() == eos_token_id:
+        break
 
 generated_words = []
-
 for token_id in tokens[0]:
-
-    word = id_to_word[
-        token_id.item()
-    ]
-
-    generated_words.append(word)
-
+    word = id_to_word[token_id.item()]
+    if word != "<EOS>": # Don't print the <EOS> token to the user
+        generated_words.append(word)
 
 print("\nGenerated text:")
 print(" ".join(generated_words))

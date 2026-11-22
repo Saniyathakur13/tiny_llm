@@ -1,2 +1,9 @@
 torch
 streamlit==1.64.0
+pypdf
+sentence-transformers
+numpy
+datasets
+matplotlib
+tqdm
+tiktoken

@@ -5,3 +5,7 @@ __pycache__/
 .streamlit/secrets.toml
 .env
 .DS_Store
+story_model/train_data.pt
+story_model/tiny_stories.parquet
+story_model/*.pkl
+__pycache__/
